@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connect TikTok — aibviously</title>
+  <meta name="description" content="Owner-only TikTok Login Kit connect for @aibviously server posting (app review demo).">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../">aibviously</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="./">Connect</a>
+        <a href="../callback/">Callback</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main main--connect">
+    <p class="eyebrow">Owner only · app review demo</p>
+    <h1>@aibviously</h1>
+    <p class="lead">
+      This authorizes <strong>server posting</strong> for the @aibviously account.
+      It is not an end-user login product.
+    </p>
+
+    <p class="connect-actions">
+      <button type="button" id="connect-tiktok" class="btn btn--primary">
+        Connect TikTok
+      </button>
+    </p>
+
+    <p class="connect-note">
+      Starts TikTok Login Kit OAuth and returns to
+      <code>/callback/</code> with a one-time authorization code
+      (or an error). The code is never shown on this site.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><a href="../">← Back to home</a></p>
+    </div>
+  </footer>
+
+  <script src="./connect.js"></script>
+</body>
+</html>
