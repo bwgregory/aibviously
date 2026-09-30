@@ -13,6 +13,7 @@
     <div class="site-header__inner">
       <a class="brand" href="../">aibviously</a>
       <nav class="nav" aria-label="Primary">
+        <a href="../connect/">Connect</a>
         <a href="./">Callback</a>
         <a href="../privacy/">Privacy</a>
         <a href="../terms/">Terms</a>
@@ -23,8 +24,9 @@
   <main class="main">
     <h1>OAuth callback</h1>
     <p class="lead">
-      This page is the redirect URI for TikTok and Meta OAuth flows used by
-      @aibviously / vid-producer.
+      TikTok (or Meta) sends the browser here after you approve or deny access.
+      This page only reports success or failure for the demo — it never shows the
+      authorization code.
     </p>
 
     <div id="status" class="card card--info" role="status" aria-live="polite">
@@ -33,15 +35,14 @@
     </div>
 
     <p>
-      The authorization code is never shown on this page and is never written to
-      the console or any log. Close this tab and return to the app that started
-      the sign-in flow.
+      Close this tab when you are done. If you started from
+      <a href="../connect/">Connect TikTok</a>, go back there to try again.
     </p>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p><a href="../">← Back to home</a></p>
+      <p><a href="../">← Back to home</a> · <a href="../connect/">Connect TikTok</a></p>
     </div>
   </footer>
 
@@ -57,26 +58,30 @@
       if (hasCode) {
         statusEl.className = "card card--success";
         statusEl.innerHTML =
-          '<p class="status-title status-title--success">Authorization code received</p>' +
-          "<p style=\"margin:0\">OAuth redirect completed successfully. You can close this window and return to the application.</p>";
+          '<p class="status-title status-title--success">Connected successfully</p>' +
+          "<p style=\"margin:0\">TikTok returned an authorization code. For this " +
+          "API-only demo that means the owner approve step worked. The code itself " +
+          "is not displayed here — your server exchanges it for tokens offline.</p>";
         return;
       }
 
       if (hasError) {
-        var safeDesc = String(errorDesc).slice(0, 200);
+        var safeDesc = String(errorDesc).slice(0, 200).replace(/[<>&]/g, "");
         statusEl.className = "card card--error";
         statusEl.innerHTML =
-          '<p class="status-title status-title--error">Authorization was not completed</p>' +
-          "<p style=\"margin:0\">The provider returned an error" +
-          (safeDesc ? ": " + safeDesc.replace(/[<>&]/g, "") : "") +
-          ". Close this window and try again from the app.</p>";
+          '<p class="status-title status-title--error">Connection failed</p>' +
+          "<p style=\"margin:0\">TikTok did not complete authorization" +
+          (safeDesc ? " (" + safeDesc + ")" : "") +
+          ". You can close this window and try again from Connect TikTok.</p>";
         return;
       }
 
       statusEl.className = "card card--info";
       statusEl.innerHTML =
         '<p class="status-title">Waiting for OAuth redirect</p>' +
-        "<p style=\"margin:0\">No authorization code was found in this URL. Open this page only as the redirect target after approving access in TikTok or Meta.</p>";
+        "<p style=\"margin:0\">No <code>code</code> or <code>error</code> query param " +
+        "was found. Open this page only after approving access in TikTok " +
+        "(or Meta). Start from <a href=\"../connect/\">Connect TikTok</a>.</p>";
     })();
   </script>
 </body>
