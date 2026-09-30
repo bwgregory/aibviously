@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aibviously — OAuth helper</title>
+  <meta name="description" content="OAuth redirect and policy pages for @aibviously / TikTok and Meta developer apps.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="./">aibviously</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="./callback/">Callback</a>
+        <a href="./privacy/">Privacy</a>
+        <a href="./terms/">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <h1>OAuth helper for @aibviously</h1>
+    <p class="lead">
+      This GitHub Pages site provides the redirect URI and policy pages required by
+      TikTok and Meta developer apps used for <strong>@aibviously</strong> /
+      vid-producer social posting.
+    </p>
+
+    <div class="card card--info">
+      <p class="status-title">What this site does</p>
+      <p style="margin:0">
+        It does not log you in or store tokens. It only hosts a safe OAuth callback
+        landing page and the public Privacy Policy and Terms of Service links that
+        developer consoles require.
+      </p>
+    </div>
+
+    <h2>Paste-ready URLs</h2>
+    <ul class="url-list">
+      <li>
+        <span class="label">Redirect URI</span>
+        <div class="code-block">https://bwgregory.github.io/aibviously/callback/</div>
+      </li>
+      <li>
+        <span class="label">Privacy Policy</span>
+        <div class="code-block">https://bwgregory.github.io/aibviously/privacy/</div>
+      </li>
+      <li>
+        <span class="label">Terms of Service</span>
+        <div class="code-block">https://bwgregory.github.io/aibviously/terms/</div>
+      </li>
+    </ul>
+
+    <h2>Pages</h2>
+    <ul>
+      <li><a href="./callback/">/callback/</a> — OAuth redirect landing (confirms a code was received without displaying it)</li>
+      <li><a href="./privacy/">/privacy/</a> — Privacy Policy</li>
+      <li><a href="./terms/">/terms/</a> — Terms of Service</li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Maintained by <a href="mailto:bwgregory@gmail.com">bwgregory</a> for @aibviously.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OAuth callback — aibviously</title>
+  <meta name="description" content="OAuth redirect landing for @aibviously. Confirms authorization without exposing the code.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../">aibviously</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="./">Callback</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <h1>OAuth callback</h1>
+    <p class="lead">
+      This page is the redirect URI for TikTok and Meta OAuth flows used by
+      @aibviously / vid-producer.
+    </p>
+
+    <div id="status" class="card card--info" role="status" aria-live="polite">
+      <p class="status-title">Checking redirect…</p>
+      <p style="margin:0">Looking for an authorization response in the URL.</p>
+    </div>
+
+    <p>
+      The authorization code is never shown on this page and is never written to
+      the console or any log. Close this tab and return to the app that started
+      the sign-in flow.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><a href="../">← Back to home</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var statusEl = document.getElementById("status");
+      var params = new URLSearchParams(window.location.search);
+      var hasCode = params.has("code") && String(params.get("code") || "").length > 0;
+      var hasError = params.has("error");
+      var errorDesc = params.get("error_description") || params.get("error") || "";
+
+      // Intentionally do not read, stringify, or log the code value.
+      if (hasCode) {
+        statusEl.className = "card card--success";
+        statusEl.innerHTML =
+          '<p class="status-title status-title--success">Authorization code received</p>' +
+          "<p style=\"margin:0\">OAuth redirect completed successfully. You can close this window and return to the application.</p>";
+        return;
+      }
+
+      if (hasError) {
+        var safeDesc = String(errorDesc).slice(0, 200);
+        statusEl.className = "card card--error";
+        statusEl.innerHTML =
+          '<p class="status-title status-title--error">Authorization was not completed</p>' +
+          "<p style=\"margin:0\">The provider returned an error" +
+          (safeDesc ? ": " + safeDesc.replace(/[<>&]/g, "") : "") +
+          ". Close this window and try again from the app.</p>";
+        return;
+      }
+
+      statusEl.className = "card card--info";
+      statusEl.innerHTML =
+        '<p class="status-title">Waiting for OAuth redirect</p>' +
+        "<p style=\"margin:0\">No authorization code was found in this URL. Open this page only as the redirect target after approving access in TikTok or Meta.</p>";
+    })();
+  </script>
+</body>
+</html>
