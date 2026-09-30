@@ -11,10 +11,9 @@
  */
 
 // ---------------------------------------------------------------------------
-// TODO (Brian): paste TikTok Client Key below. Do NOT commit Client Secret.
-// Client Key is public-ish (used in the browser redirect); Secret stays server-side.
+// Sandbox Client Key (public OAuth URL param). Do NOT commit Client Secret.
 // ---------------------------------------------------------------------------
-var CLIENT_KEY = "TODO_PASTE_TIKTOK_CLIENT_KEY";
+var CLIENT_KEY = "sbawix1bo8mpex7xox";
 
 // Must match a Redirect URI registered in TikTok Login Kit product settings.
 var REDIRECT_URI = "https://bwgregory.github.io/aibviously/callback/";
