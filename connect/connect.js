@@ -20,7 +20,7 @@ var REDIRECT_URI = "https://bwgregory.github.io/aibviously/callback/";
 
 // Comma-separated scopes approved for this app in the TikTok developer portal.
 // Adjust to match what you requested (e.g. video.upload / video.publish).
-var SCOPE = "user.info.basic,video.upload";
+var SCOPE = "user.info.basic,video.upload,video.publish";
 
 var AUTH_BASE = "https://www.tiktok.com/v2/auth/authorize/";
 
