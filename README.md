@@ -34,9 +34,22 @@ https://bwgregory.github.io/aibviously/terms/
 - Source: branch **main**, folder **/ (root)**
 - Marker file: `.nojekyll` (plain HTML; no Jekyll processing)
 
-### Visibility note
+### Brian: enable public access (required)
 
-Public GitHub Pages (required so TikTok/Meta can fetch privacy, terms, and the redirect URI) typically needs a **public** repository on the free plan. If this repo is still **private**, set **Settings → General → Danger Zone → Change repository visibility → Public** before relying on the URLs above.
+This agent pushed the site to `main` but **could not** flip visibility or enable Pages (needs repo admin). Do both before TikTok/Meta can load the URLs:
+
+1. **Make the repo Public**  
+   GitHub → **Settings → General → Danger Zone → Change repository visibility → Public**  
+   (Free-plan public Pages generally requires a public repo.)
+
+2. **Enable Pages**  
+   GitHub → **Settings → Pages**  
+   - Build and deployment → Source: **Deploy from a branch**  
+   - Branch: **main**  
+   - Folder: **/ (root)**  
+   - Save
+
+Site root after Pages is live: `https://bwgregory.github.io/aibviously/`
 
 ## Contact
 
